@@ -37,13 +37,13 @@ public class HomeController {
                           @PathVariable("email") String email,
                           @PathVariable("phone") String phone) {
         logger.info("addUser");
-        return trainingDataOperation.addUser(new Employee(id, name, surname, email, phone));
+        return trainingDataOperation.addUser(new Employee(name, surname, email, phone));
     }
 
     @DeleteMapping("/deleteUser/{userId}")
     public String deleteUser(@PathVariable("userId") String userId) {
         logger.info("deleteUser");
-        trainingDataOperation.deleteUser(Integer.parseInt(userId));
+//        trainingDataOperation.deleteUser(Integer.parseInt(userId));
         return "User deleted";
     }
 }

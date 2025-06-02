@@ -1,22 +1,23 @@
 package com.learning.training.enitity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "users")
 public class Employee {
 
     @Id
+    @GeneratedValue(generator = "user-id-generator")
+    @GenericGenerator(name = "user-id-generator", strategy = "com.learning.training.generator.CustomUsersGenerator")
     private String id;
+
     private String name;
     private String surname;
     private String email;
     private String phone;
 
-    public Employee(String id, String name, String surname, String email, String phone) {
-        this.id = id;
+    public Employee(String name, String surname, String email, String phone) {
         this.name = name;
         this.surname = surname;
         this.email = email;
